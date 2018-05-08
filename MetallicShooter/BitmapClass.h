@@ -56,12 +56,19 @@ private:
 	int m_bitmapHeight = 0;
 	int m_previousPosX = 0;
 	int m_previousPosY = 0;
-	int m_NextPosX = 0;
-	int m_NextPosY = 0;
+	int m_nextPosX = 0;
+	int m_nextPosY = 0;
 
 	float m_TextureUStart = 0.0f;
 	float m_TextureUEnd = 1.0f;
 	float m_TextureVStart = 0.0f;
 	float m_TextureVEnd = 1.0f;
+
+	//이 비트맵을 렌더링 할 것인지를 나타내는 변수입니다. true일 경우 화면에 렌더링되고 false 일 경우 RenderManager에서 감지하고 렌더링하지 않습니다.
+	bool m_isVisible = true;
+
+	//렌더링 우선 순위입니다. 낮을수록 먼저 렌더링되며 우선순위가 같을 경우 나중에 넣은 것이 나중에 렌더링됩니다. 0은 백그라운드입니다.
+	int m_renderPriority = 1;
+
 };
 

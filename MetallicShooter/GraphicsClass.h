@@ -12,6 +12,7 @@ class D3DClass;
 class CameraClass;
 class TextureShaderClass;
 class BitmapClass;
+class RenderManager;
 class GraphicsClass
 {
 public:
@@ -30,8 +31,9 @@ private:
 	D3DClass * m_Direct3D = nullptr;
 	CameraClass* m_Camera = nullptr;
 	TextureShaderClass* m_TextureShader = nullptr;
+	RenderManager* m_RenderManager = nullptr;
 
-	BitmapClass** m_DestBitmapObjects = nullptr;
-	int m_BitmapArrayLength = 300;
+	BitmapClass* m_BackGround = nullptr;
+
 };
 

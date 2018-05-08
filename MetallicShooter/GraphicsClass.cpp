@@ -6,6 +6,7 @@
 #include "graphicsclass.h"
 #include "GameStateClass.h"
 #include "InputClass.h"
+#include "RenderManager.h"
 #include <cstdlib>
 #include <ctime>
 
@@ -66,12 +67,22 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 		return false;
 	}
 
-	//m_DestBitmapObjects 초기화 이 배열에 들어가면 화면에 렌더링됨
-	m_DestBitmapObjects = new BitmapClass*[m_BitmapArrayLength];
-	for (int i = 0; i < m_BitmapArrayLength; ++i)
+	//m_renderManager 객체 초기화
+	m_RenderManager = new RenderManager();
+	m_RenderManager->Initialize(m_TextureShader,m_Direct3D);
+
+	m_BackGround = new BitmapClass();
+	if (!m_BackGround)
 	{
-		m_DestBitmapObjects[i] = nullptr;
+		return false;
 	}
+	if (!m_BackGround->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), screenWidth, screenHeight, (WCHAR*)L"../MetallicShooter/data/MetallicShooterMain.png", screenWidth, screenHeight))
+	{
+		return false;
+	}
+
+	m_RenderManager->AddRenderTarget(m_BackGround);
+
 
 	return true;
 }
@@ -105,11 +116,6 @@ void GraphicsClass::Shutdown()
 
 bool GraphicsClass::Frame()
 {
-	//매 프레임이 시작될 때 마다 이전 destBitmapObjects 배열을 비워줍니다.
-	for (int i = 0; i < m_BitmapArrayLength; ++i)
-	{
-		m_DestBitmapObjects[i] = nullptr;
-	}
 
 	//k는 DestbitmapObjects 배열의 인덱스로 사용합니다
 	int k = 0;
@@ -146,24 +152,32 @@ bool GraphicsClass::Render(float rotation)
 	// 모든 2D 렌더링을 시작하려면 Z 버퍼를 끕니다.
 	m_Direct3D->TurnZBufferOff();
 
-	//m_DestBitmapObject 안에 들어있는 모든 오브젝트를 렌더링합니다.
-	for (int i = 0; i < m_BitmapArrayLength; ++i)
-	{
-		// 비트 맵 버텍스와 인덱스 버퍼를 그래픽 파이프 라인에 배치하여 그리기를 준비합니다.
-		if (m_DestBitmapObjects[i])
-		{
-			if (!m_DestBitmapObjects[i]->Render(m_Direct3D->GetDeviceContext(), m_DestBitmapObjects[i]->GetNextPosX(), m_DestBitmapObjects[i]->GetNextPosY()))
-			{
-				return false;
-			}
 
-			// 텍스처 쉐이더로 비트 맵을 렌더링합니다.	
-			if (!m_TextureShader->Render(m_Direct3D->GetDeviceContext(), m_DestBitmapObjects[i]->GetIndexCount(), worldMatrix, viewMatrix, orthoMatrix, m_DestBitmapObjects[i]->GetTexture()))
-			{
-				return false;
-			}
-		}
+	//렌더 매니저에 등록된 비트맵들을 렌더링합니다.
+	if (!m_RenderManager->Render(worldMatrix, viewMatrix, orthoMatrix))
+	{
+		return false;
 	}
+
+	////m_DestBitmapObject 안에 들어있는 모든 오브젝트를 렌더링합니다.
+	//for (int i = 0; i < m_BitmapArrayLength; ++i)
+	//{
+	//	// 비트 맵 버텍스와 인덱스 버퍼를 그래픽 파이프 라인에 배치하여 그리기를 준비합니다.
+	//	if (m_DestBitmapObjects[i])
+	//	{
+	//		if (!m_DestBitmapObjects[i]->Render(m_Direct3D->GetDeviceContext(), m_DestBitmapObjects[i]->GetNextPosX(), m_DestBitmapObjects[i]->GetNextPosY()))
+	//		{
+	//			return false;
+	//		}
+
+	//		// 텍스처 쉐이더로 비트 맵을 렌더링합니다.	
+	//		if (!m_TextureShader->Render(m_Direct3D->GetDeviceContext(), m_DestBitmapObjects[i]->GetIndexCount(), worldMatrix, viewMatrix, orthoMatrix, m_DestBitmapObjects[i]->GetTexture()))
+	//		{
+	//			return false;
+	//		}
+	//	}
+	//}
+	
 
 
 	// 모든 2D 렌더링이 완료되었으므로 Z 버퍼를 다시 켜십시오.

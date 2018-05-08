@@ -86,22 +86,22 @@ int BitmapClass::GetPreviousPosY()
 
 void BitmapClass::SetNextPosX(int NewX)
 {
-	m_NextPosX = NewX;
+	m_nextPosX = NewX;
 }
 
 void BitmapClass::SetNextPosY(int NewY)
 {
-	m_NextPosY = NewY;
+	m_nextPosY = NewY;
 }
 
 int BitmapClass::GetNextPosX()
 {
-	return m_NextPosX;
+	return m_nextPosX;
 }
 
 int BitmapClass::GetNextPosY()
 {
-	return m_NextPosY;
+	return m_nextPosY;
 }
 
 

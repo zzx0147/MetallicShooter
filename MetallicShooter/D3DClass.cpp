@@ -26,7 +26,7 @@ bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hw
 	if (FAILED(CreateDXGIFactory(__uuidof(IDXGIFactory), (void**)&factory)))
 	{
 		return false;
-	}
+	}	
 
 	//팩토리 객체를 사용하여 첫번째 그래픽 카드 인터페이스 어뎁터를 생성합니다.
 	IDXGIAdapter* adapter = nullptr;
@@ -377,6 +377,7 @@ bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hw
 
 	m_deviceContext->OMSetBlendState(m_blendState, NULL, 0xffffffff);
 	//추가 끝
+
 
 
 
