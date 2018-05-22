@@ -16,7 +16,7 @@ public:
 	BitmapClass(const BitmapClass&);
 	~BitmapClass();
 
-	bool Initialize(ID3D11Device*, ID3D11DeviceContext* deviceContext, int, int, WCHAR*, int, int);
+	bool Initialize(ID3D11Device*, ID3D11DeviceContext* deviceContext,const int&,const int&, WCHAR*,const int&,const int&,const int&);
 	void Shutdown();
 	bool Render(ID3D11DeviceContext*, int, int);
 
@@ -35,6 +35,7 @@ public:
 	void SetNextPosY(int);
 	int GetNextPosX();
 	int GetNextPosY();
+	int GetRenderPriority();
 private:
 	bool InitializeBuffers(ID3D11Device*);
 	void ShutdownBuffers();

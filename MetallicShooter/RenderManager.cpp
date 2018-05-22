@@ -49,6 +49,26 @@ bool RenderManager::Render(XMMATRIX worldMatrix, XMMATRIX viewMatrix, XMMATRIX o
 
 bool RenderManager::AddRenderTarget(BitmapClass* newRenderTarget)
 {
+	list<BitmapClass*>::iterator itor;
+	list<BitmapClass*>::iterator preItor;
+
+	if ((*RenderTarget.begin())->GetRenderPriority() > newRenderTarget->GetRenderPriority)
+	{
+		RenderTarget.push_front(newRenderTarget);
+	}
+
+	preItor = itor = RenderTarget.begin();
+	itor++;
+
+	for (; itor != RenderTarget.end(); itor++, preItor++)
+	{
+		if ((*itor)->GetRenderPriority() > newRenderTarget->GetRenderPriority())
+		{
+			RenderTarget.insert(preItor, newRenderTarget);
+			return true;
+		}
+	}
+
 	RenderTarget.push_back(newRenderTarget);
 	return true;
 }

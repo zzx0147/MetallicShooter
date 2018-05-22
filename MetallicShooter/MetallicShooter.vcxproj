@@ -161,6 +161,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ActorClass.h" />
+    <ClInclude Include="ActorManager.h" />
     <ClInclude Include="AlignedAllocationPolicy.h" />
     <ClInclude Include="BitmapClass.h" />
     <ClInclude Include="CameraClass.h" />
@@ -178,6 +180,8 @@
     <ClInclude Include="TextureShaderClass.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ActorClass.cpp" />
+    <ClCompile Include="ActorManager.cpp" />
     <ClCompile Include="BitmapClass.cpp" />
     <ClCompile Include="CameraClass.cpp" />
     <ClCompile Include="D3DClass.cpp" />

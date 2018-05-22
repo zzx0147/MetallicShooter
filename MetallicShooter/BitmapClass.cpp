@@ -16,7 +16,7 @@ BitmapClass::~BitmapClass()
 {
 }
 
-bool BitmapClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, int screenWidth, int screenHeight, WCHAR* textureFilename, int bitmapWidth, int bitmapHeight)
+bool BitmapClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext,const int& screenWidth,const int& screenHeight, WCHAR* textureFilename,const int& bitmapWidth, const int& bitmapHeight,const int& renderPriority)
 {
 	//화면 크기를 멤버 변수에 저장
 	m_screenWidth = screenWidth;
@@ -25,6 +25,9 @@ bool BitmapClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 	//렌더링한 비트맵의 픽셀의 크기를 저장
 	m_bitmapWidth = bitmapWidth;
 	m_bitmapHeight = bitmapHeight;
+
+	//렌더링 우선순위를 멤버변수에 저장
+	m_renderPriority = renderPriority;
 
 	// 이전 렌더링 위치를 음수로 초기화합니다.
 	m_previousPosX = -1;
@@ -103,7 +106,6 @@ int BitmapClass::GetNextPosY()
 {
 	return m_nextPosY;
 }
-
 
 bool BitmapClass::InitializeBuffers(ID3D11Device* device)
 {
@@ -339,4 +341,9 @@ int BitmapClass::GetBitmapHeight()
 int BitmapClass::GetBitmapWidth()
 {
 	return m_bitmapWidth;
+}
+
+int BitmapClass::GetRenderPriority()
+{
+	return m_renderPriority;
 }

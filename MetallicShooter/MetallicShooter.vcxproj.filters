@@ -93,6 +93,12 @@
     <ClInclude Include="stdafx.h">
       <Filter>헤더 파일\System</Filter>
     </ClInclude>
+    <ClInclude Include="ActorClass.h">
+      <Filter>헤더 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorManager.h">
+      <Filter>헤더 파일\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TextureClass.cpp">
@@ -133,6 +139,12 @@
     </ClCompile>
     <ClCompile Include="GameStateClass.cpp">
       <Filter>소스 파일\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorClass.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorManager.cpp">
+      <Filter>소스 파일\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
