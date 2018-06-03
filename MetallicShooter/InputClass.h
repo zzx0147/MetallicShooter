@@ -7,18 +7,14 @@ private:
 public:
 	InputClass(const InputClass&);
 	~InputClass();
-
-	static void CreateInputClass();
-	static InputClass* GetInputObject();
-
 	void Initialize();
+
+	static InputClass* GetInputObject();	
 
 	void KeyDown(unsigned int);
 	void KeyUp(unsigned int);
-
 	bool IsKeyDown(unsigned int);
 	bool IsAnyKeyDown();
-
 	bool IsKeyDownOnce(unsigned int);
 
 private:

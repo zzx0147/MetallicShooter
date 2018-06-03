@@ -1,8 +1,6 @@
 #pragma once
 
 //Àü¿ª
-
-
 const bool FULL_SCREEN = false;
 const bool VSYNC_ENABLED = true;
 const float SCREEN_DEPTH = 1000.0f;
@@ -13,6 +11,8 @@ class CameraClass;
 class TextureShaderClass;
 class BitmapClass;
 class RenderManager;
+class ActorManager;
+class CreatorHelperClass;
 class GraphicsClass
 {
 public:
@@ -32,7 +32,8 @@ private:
 	CameraClass* m_Camera = nullptr;
 	TextureShaderClass* m_TextureShader = nullptr;
 	RenderManager* m_RenderManager = nullptr;
-
+	ActorManager* m_ActorManager = nullptr;
+	CreatorHelperClass* m_CreatorHelper = nullptr;
 	BitmapClass* m_BackGround = nullptr;
 
 };

@@ -5,7 +5,6 @@ public:
 	D3DClass();
 	D3DClass(const D3DClass&);
 	~D3DClass();
-
 	bool Initialize(int, int, bool, HWND, bool, float, float);
 	void Shutdown();
 

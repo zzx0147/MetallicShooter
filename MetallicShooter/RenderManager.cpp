@@ -23,54 +23,39 @@ bool RenderManager::Initialize(TextureShaderClass* shader,D3DClass* direct3D)
 
 bool RenderManager::Render(XMMATRIX worldMatrix, XMMATRIX viewMatrix, XMMATRIX orthoMatrix)
 {
-	if (RenderTarget.empty())
+	if (m_RenderTarget.empty())
 	{
 		return true;
 	}
 
 	list<BitmapClass*>::iterator itor;
-	for (itor = RenderTarget.begin(); itor != RenderTarget.end(); itor++)
+	for (itor = m_RenderTarget.begin(); itor != m_RenderTarget.end(); itor++)
 	{
-		if (!(*itor)->Render(m_direct3D->GetDeviceContext(), (*itor)->GetNextPosX(), (*itor)->GetNextPosY()))
+		if ((*itor)->GetIsVisible()&& (*itor)->GetIsFitState())
 		{
-			return false;
-		}
+			if (!(*itor)->Render(m_direct3D->GetDeviceContext(), (*itor)->GetNextPosX(), (*itor)->GetNextPosY()))
+			{
+				return false;
+			}
 
-		if (!m_textureShader->Render(m_direct3D->GetDeviceContext(), (*itor)->GetIndexCount(), worldMatrix, viewMatrix, orthoMatrix,(*itor)->GetTexture()))
-		{
-			return false;
+			if (!m_textureShader->Render(m_direct3D->GetDeviceContext(), (*itor)->GetIndexCount(), worldMatrix, viewMatrix, orthoMatrix, (*itor)->GetTexture()))
+			{
+				return false;
+			}
 		}
 	}
-
 	return true;
-	
 }
-
 
 bool RenderManager::AddRenderTarget(BitmapClass* newRenderTarget)
 {
-	list<BitmapClass*>::iterator itor;
-	list<BitmapClass*>::iterator preItor;
-
-	if ((*RenderTarget.begin())->GetRenderPriority() > newRenderTarget->GetRenderPriority)
-	{
-		RenderTarget.push_front(newRenderTarget);
-	}
-
-	preItor = itor = RenderTarget.begin();
-	itor++;
-
-	for (; itor != RenderTarget.end(); itor++, preItor++)
-	{
-		if ((*itor)->GetRenderPriority() > newRenderTarget->GetRenderPriority())
-		{
-			RenderTarget.insert(preItor, newRenderTarget);
-			return true;
-		}
-	}
-
-	RenderTarget.push_back(newRenderTarget);
+	m_RenderTarget.push_back(newRenderTarget);
 	return true;
+}
+
+void RenderManager::Sort()
+{	
+	m_RenderTarget.sort([](BitmapClass* a, BitmapClass* b) {return a->GetRenderPriority() < b->GetRenderPriority(); });
 }
 
 void RenderManager::Shutdown()

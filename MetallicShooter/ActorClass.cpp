@@ -13,5 +13,5 @@ ActorClass::~ActorClass()
 
 bool ActorClass::Frame()
 {
-
+	return true;
 }

@@ -10,7 +10,6 @@ public:
 	SystemClass();
 	SystemClass(const SystemClass&);
 	~SystemClass();
-
 	bool Initialize();
 	void Shutdown();
 	void Run();

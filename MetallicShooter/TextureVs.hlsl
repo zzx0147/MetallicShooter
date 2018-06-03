@@ -1,7 +1,5 @@
 //file name texture.vs
 
-
-
 cbuffer MatrixBuffer
 {
 	matrix worldMatrix;
@@ -9,7 +7,6 @@ cbuffer MatrixBuffer
 	matrix projectionMatrix;
 };
 //typedef   
-
 
 struct VertexInputType
 {
@@ -22,7 +19,6 @@ struct PixelInputType
 	float4 position : SV_POSITION;
 	float2 tex : TEXCOORD0;
 };
-
 
 //vertexShader
 PixelInputType main(VertexInputType input)

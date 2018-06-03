@@ -13,37 +13,37 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\Object">
-      <UniqueIdentifier>{4beb9836-800e-4c23-a7f3-c8bf26872890}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Shader">
-      <UniqueIdentifier>{cce783ce-661b-40bc-b325-268f25941fa6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Utility">
-      <UniqueIdentifier>{bd48ee3b-eb75-4b7b-b83a-b11bab950ece}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Graphics">
-      <UniqueIdentifier>{5fc5e010-701c-48d6-a216-17e9e92a4944}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\System">
-      <UniqueIdentifier>{a36a785d-0bd2-4ade-924f-071a6fd11adb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Game">
-      <UniqueIdentifier>{d99a9357-23dc-4014-be5f-836c5b0de674}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\System">
-      <UniqueIdentifier>{e39188d3-b5b6-455e-a9bc-431b74238e41}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Graphics">
-      <UniqueIdentifier>{6da65853-6230-4355-be9f-f81e3a2d45e7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Object">
       <UniqueIdentifier>{6ac6a95f-d264-4e5a-bc16-5a0061f32627}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Game">
-      <UniqueIdentifier>{2c85cc45-a4bb-4d9a-8e0c-e42de58a2024}</UniqueIdentifier>
+    <Filter Include="소스 파일\Object">
+      <UniqueIdentifier>{4beb9836-800e-4c23-a7f3-c8bf26872890}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Utility">
+    <Filter Include="소스 파일\Engine">
+      <UniqueIdentifier>{91caccf5-4b95-4303-9eff-1e6a0481fc80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine\Graphics">
+      <UniqueIdentifier>{5fc5e010-701c-48d6-a216-17e9e92a4944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine\Shader">
+      <UniqueIdentifier>{cce783ce-661b-40bc-b325-268f25941fa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine\System">
+      <UniqueIdentifier>{a36a785d-0bd2-4ade-924f-071a6fd11adb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Engine">
+      <UniqueIdentifier>{3280ffc0-ed28-4fc7-b679-bbd9deb161f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Engine\Graphics">
+      <UniqueIdentifier>{6da65853-6230-4355-be9f-f81e3a2d45e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Engine\System">
+      <UniqueIdentifier>{e39188d3-b5b6-455e-a9bc-431b74238e41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine\UtilityAndManager">
+      <UniqueIdentifier>{bd48ee3b-eb75-4b7b-b83a-b11bab950ece}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Engine\UtilityAndManager">
       <UniqueIdentifier>{f3b3b7ef-bd0e-41a1-bbe7-5814a2597737}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -51,59 +51,68 @@
     <ClInclude Include="BitmapClass.h">
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
-    <ClInclude Include="GameStateClass.h">
-      <Filter>헤더 파일\Game</Filter>
-    </ClInclude>
     <ClInclude Include="ModelClass.h">
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
     <ClInclude Include="SystemClass.h">
-      <Filter>헤더 파일\System</Filter>
+      <Filter>헤더 파일\Engine\System</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsClass.h">
-      <Filter>헤더 파일\Graphics</Filter>
+      <Filter>헤더 파일\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="D3DClass.h">
-      <Filter>헤더 파일\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderManager.h">
-      <Filter>헤더 파일\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureClass.h">
-      <Filter>헤더 파일\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureShaderClass.h">
-      <Filter>헤더 파일\Object</Filter>
+      <Filter>헤더 파일\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="CameraClass.h">
-      <Filter>헤더 파일\Graphics</Filter>
+      <Filter>헤더 파일\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="InputClass.h">
-      <Filter>헤더 파일\Utility</Filter>
+      <Filter>헤더 파일\Engine\UtilityAndManager</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>헤더 파일\System</Filter>
-    </ClInclude>
-    <ClInclude Include="AlignedAllocationPolicy.h">
-      <Filter>헤더 파일\System</Filter>
+      <Filter>헤더 파일\Engine\System</Filter>
     </ClInclude>
     <ClInclude Include="DxDefine.h">
-      <Filter>헤더 파일\System</Filter>
+      <Filter>헤더 파일\Engine\System</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
-      <Filter>헤더 파일\System</Filter>
+      <Filter>헤더 파일\Engine\System</Filter>
     </ClInclude>
     <ClInclude Include="ActorClass.h">
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
+    <ClInclude Include="AlignedAllocationPolicy.h">
+      <Filter>헤더 파일\Engine\UtilityAndManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CreatorHelperClass.h">
+      <Filter>헤더 파일\Engine\UtilityAndManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateClass.h">
+      <Filter>헤더 파일\Engine\UtilityAndManager</Filter>
+    </ClInclude>
     <ClInclude Include="ActorManager.h">
+      <Filter>헤더 파일\Engine\UtilityAndManager</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.h">
+      <Filter>헤더 파일\Engine\UtilityAndManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureShaderClass.h">
+      <Filter>헤더 파일\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureClass.h">
+      <Filter>헤더 파일\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceShipActorClass.h">
+      <Filter>헤더 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="PressEnterToStart.h">
+      <Filter>헤더 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="FlowingBackgroundActor.h">
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TextureClass.cpp">
-      <Filter>소스 파일\Object</Filter>
-    </ClCompile>
     <ClCompile Include="ModelClass.cpp">
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
@@ -111,48 +120,116 @@
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
     <ClCompile Include="InputClass.cpp">
-      <Filter>소스 파일\Utility</Filter>
+      <Filter>소스 파일\Engine\UtilityAndManager</Filter>
     </ClCompile>
     <ClCompile Include="CameraClass.cpp">
-      <Filter>소스 파일\Graphics</Filter>
+      <Filter>소스 파일\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="D3DClass.cpp">
-      <Filter>소스 파일\Graphics</Filter>
+      <Filter>소스 파일\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="GraphicsClass.cpp">
-      <Filter>소스 파일\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderManager.cpp">
-      <Filter>소스 파일\Graphics</Filter>
+      <Filter>소스 파일\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>소스 파일\System</Filter>
+      <Filter>소스 파일\Engine\System</Filter>
     </ClCompile>
     <ClCompile Include="SystemClass.cpp">
-      <Filter>소스 파일\System</Filter>
+      <Filter>소스 파일\Engine\System</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>소스 파일\System</Filter>
+      <Filter>소스 파일\Engine\System</Filter>
     </ClCompile>
     <ClCompile Include="TextureShaderClass.cpp">
-      <Filter>소스 파일\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStateClass.cpp">
-      <Filter>소스 파일\Game</Filter>
+      <Filter>소스 파일\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="ActorClass.cpp">
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
+    <ClCompile Include="CreatorHelperClass.cpp">
+      <Filter>소스 파일\Engine\UtilityAndManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateClass.cpp">
+      <Filter>소스 파일\Engine\UtilityAndManager</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>소스 파일\Engine\UtilityAndManager</Filter>
+    </ClCompile>
     <ClCompile Include="ActorManager.cpp">
+      <Filter>소스 파일\Engine\UtilityAndManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureClass.cpp">
+      <Filter>소스 파일\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceShipActorClass.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PressEnterToStart.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="FlowingBackgroundActor.cpp">
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="TextureVs.hlsl">
-      <Filter>소스 파일\Shader</Filter>
+      <Filter>소스 파일\Engine\Shader</Filter>
     </FxCompile>
     <FxCompile Include="TexturePs.hlsl">
-      <Filter>소스 파일\Shader</Filter>
+      <Filter>소스 파일\Engine\Shader</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\BackGround.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Cell.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\CellSelector.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Cursor.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\HowToScene.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Intro.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\IntroductionScene.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Lose.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\MainScene.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Map.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\MetallicShooterMain.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Ship2_H.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Ship2_V.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Ship3_H.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Ship3_V.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Ship4_H.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="data\Ship4_V.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

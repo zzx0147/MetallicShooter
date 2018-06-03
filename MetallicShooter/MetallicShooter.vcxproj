@@ -166,13 +166,17 @@
     <ClInclude Include="AlignedAllocationPolicy.h" />
     <ClInclude Include="BitmapClass.h" />
     <ClInclude Include="CameraClass.h" />
+    <ClInclude Include="CreatorHelperClass.h" />
     <ClInclude Include="D3DClass.h" />
     <ClInclude Include="DxDefine.h" />
+    <ClInclude Include="FlowingBackgroundActor.h" />
     <ClInclude Include="GameStateClass.h" />
     <ClInclude Include="GraphicsClass.h" />
     <ClInclude Include="InputClass.h" />
     <ClInclude Include="ModelClass.h" />
+    <ClInclude Include="PressEnterToStart.h" />
     <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="SpaceShipActorClass.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="targetver.h" />
@@ -184,13 +188,17 @@
     <ClCompile Include="ActorManager.cpp" />
     <ClCompile Include="BitmapClass.cpp" />
     <ClCompile Include="CameraClass.cpp" />
+    <ClCompile Include="CreatorHelperClass.cpp" />
     <ClCompile Include="D3DClass.cpp" />
+    <ClCompile Include="FlowingBackgroundActor.cpp" />
     <ClCompile Include="GameStateClass.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelClass.cpp" />
+    <ClCompile Include="PressEnterToStart.cpp" />
     <ClCompile Include="RenderManager.cpp" />
+    <ClCompile Include="SpaceShipActorClass.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -212,6 +220,25 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\BackGround.png" />
+    <Image Include="data\Cell.png" />
+    <Image Include="data\CellSelector.png" />
+    <Image Include="data\Cursor.png" />
+    <Image Include="data\HowToScene.png" />
+    <Image Include="data\Intro.png" />
+    <Image Include="data\IntroductionScene.png" />
+    <Image Include="data\Lose.png" />
+    <Image Include="data\MainScene.png" />
+    <Image Include="data\Map.png" />
+    <Image Include="data\MetallicShooterMain.png" />
+    <Image Include="data\Ship2_H.png" />
+    <Image Include="data\Ship2_V.png" />
+    <Image Include="data\Ship3_H.png" />
+    <Image Include="data\Ship3_V.png" />
+    <Image Include="data\Ship4_H.png" />
+    <Image Include="data\Ship4_V.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

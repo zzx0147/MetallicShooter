@@ -39,6 +39,7 @@ XMFLOAT3 CameraClass::GetRotation()
 	return m_rotation;
 }
 
+
 void CameraClass::Render()
 {
 	XMFLOAT3 up, position, lookAt;

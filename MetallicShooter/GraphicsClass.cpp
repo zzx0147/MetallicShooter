@@ -7,6 +7,11 @@
 #include "GameStateClass.h"
 #include "InputClass.h"
 #include "RenderManager.h"
+#include "ActorManager.h"
+#include "CreatorHelperClass.h"
+#include "SpaceShipActorClass.h"
+#include "PressEnterToStart.h"
+#include "FlowingBackgroundActor.h"
 #include <cstdlib>
 #include <ctime>
 
@@ -24,7 +29,6 @@ GraphicsClass::GraphicsClass(const GraphicsClass& other)
 GraphicsClass::~GraphicsClass()
 {
 }
-
 
 bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 {
@@ -71,22 +75,86 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	m_RenderManager = new RenderManager();
 	m_RenderManager->Initialize(m_TextureShader,m_Direct3D);
 
-	m_BackGround = new BitmapClass();
+	//m_ActorManager 객체 초기화
+	m_ActorManager = new ActorManager();
+	m_ActorManager->Initialize();
+
+	//CreatorHelperClass 객체 초기화
+	m_CreatorHelper = new CreatorHelperClass();
+	m_CreatorHelper->Initalize(m_RenderManager, m_ActorManager);
+
+	//게임 스테이트 변경 
+	GameStateClass::SetGameStateEnum(GameStateEnum::INTRO);
+
+	
+	//스페이스쉽 객체를 생성함
+	auto SpaceShip = m_CreatorHelper->CreateObject<SpaceShipActorClass>();
+	if (!SpaceShip)
+	{
+		return false;
+	}
+	if (!SpaceShip->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), screenWidth, screenHeight,
+		(WCHAR*)L"../MetallicShooter/data/Rocket.png", 60, 60, 10, 1, new GameStateEnum[1]{ GameStateEnum::INGAME }))
+	{
+		return false;
+	}
+
+	//백그라운드 객체를 생성함
+	m_BackGround = m_CreatorHelper->CreateObject<BitmapClass>();
 	if (!m_BackGround)
 	{
 		return false;
 	}
-	if (!m_BackGround->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), screenWidth, screenHeight, (WCHAR*)L"../MetallicShooter/data/MetallicShooterMain.png", screenWidth, screenHeight))
+	if (!m_BackGround->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), screenWidth, screenHeight,
+		(WCHAR*)L"../MetallicShooter/data/MetallicShooterMain.png", screenWidth, screenHeight, 0, 1,
+		new GameStateEnum[3]{ GameStateEnum::INTRO }))
 	{
 		return false;
 	}
 
-	m_RenderManager->AddRenderTarget(m_BackGround);
+	auto pressEnterToStart = m_CreatorHelper->CreateObject<PressEnterToStart>();
+	if (!pressEnterToStart)
+	{
+		return false;
+	}
+	if (!pressEnterToStart->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), screenWidth, screenHeight,
+		(WCHAR*)L"../MetallicShooter/data/Press.png", 600 , 60, 1, 1, new GameStateEnum[1]{ GameStateEnum::INTRO }))
+	{
+		return false;
+	}
+	pressEnterToStart->SetNextPosX(660);
+	pressEnterToStart->SetNextPosY(900);
+	
+	auto backGround1 = m_CreatorHelper->CreateObject<FlowingBackgroundActor>();
+	if (!backGround1)
+	{
+		return false;
+	}
+	if (!backGround1->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), screenWidth, screenHeight,
+		(WCHAR*)L"../MetallicShooter/data/FlowingBackground.png", screenWidth, screenHeight, 0, 1, new GameStateEnum[1]{ GameStateEnum::INGAME }))
+	{
+		return false;
+	}
 
+	auto backGround2 = m_CreatorHelper->CreateObject<FlowingBackgroundActor>();
+	if (!backGround2)
+	{
+		return false;
+	}
+	if (!backGround2->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), screenWidth, screenHeight,
+		(WCHAR*)L"../MetallicShooter/data/FlowingBackground.png", screenWidth, screenHeight, 0, 1, new GameStateEnum[1]{ GameStateEnum::INGAME }))
+	{
+		return false;
+	}
+
+	backGround1->InitPos(0, 0);
+	backGround2->InitPos(0, 1080);
+
+	
+	m_RenderManager->Sort();
 
 	return true;
 }
-
 
 void GraphicsClass::Shutdown()
 {
@@ -116,9 +184,7 @@ void GraphicsClass::Shutdown()
 
 bool GraphicsClass::Frame()
 {
-
-	//k는 DestbitmapObjects 배열의 인덱스로 사용합니다
-	int k = 0;
+	m_ActorManager->Frame();
 
 	static float rotation = 0.0f;
 
@@ -131,7 +197,6 @@ bool GraphicsClass::Frame()
 
 	return Render(rotation);
 }
-
 
 bool GraphicsClass::Render(float rotation)
 {

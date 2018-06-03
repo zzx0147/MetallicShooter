@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "InputClass.h"
 
-InputClass* InputClass::m_input = nullptr;
+InputClass* InputClass::m_input = new InputClass();
 
 InputClass::InputClass()
 {
@@ -39,14 +39,13 @@ bool InputClass::IsKeyDown(unsigned int key)
 	return m_keys[key];
 }
 
-void InputClass::CreateInputClass()
-{
-	m_input = new InputClass();
-	m_input->Initialize();
-}
-
 InputClass* InputClass::GetInputObject()
 {
+	if (m_input)
+	{
+		return m_input;
+	}
+	m_input = new InputClass();
 	return m_input;
 }
 
@@ -60,8 +59,6 @@ bool InputClass::IsAnyKeyDown()
 			return true;
 		}
 	}
-
-
 	return false;
 }
 

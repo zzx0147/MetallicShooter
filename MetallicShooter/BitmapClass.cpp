@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "BitmapClass.h"
 #include "TextureClass.h"
+#include "GameStateClass.h"
 #include <atlstr.h>
 
 BitmapClass::BitmapClass()
@@ -11,12 +12,11 @@ BitmapClass::BitmapClass(const BitmapClass& other)
 {
 }
 
-
 BitmapClass::~BitmapClass()
 {
 }
 
-bool BitmapClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext,const int& screenWidth,const int& screenHeight, WCHAR* textureFilename,const int& bitmapWidth, const int& bitmapHeight,const int& renderPriority)
+bool BitmapClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext,const int& screenWidth,const int& screenHeight, WCHAR* textureFilename,const int& bitmapWidth, const int& bitmapHeight,const int& renderPriority,const int& enabledStatesCount,GameStateEnum* enabledStates)
 {
 	//화면 크기를 멤버 변수에 저장
 	m_screenWidth = screenWidth;
@@ -38,6 +38,9 @@ bool BitmapClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 	{
 		return false;
 	}
+	//렌더링 가능한 게임 스테이스를 설정합니다.
+	m_EnabledState = enabledStates;
+	m_EnabledStateCount = enabledStatesCount;
 
 	//이 모델의 텍스처를 로드합니다.
 	return LoadTexture(device, deviceContext, textureFilename);
@@ -65,6 +68,24 @@ bool BitmapClass::Render(ID3D11DeviceContext* deviceContext, int positionX, int 
 	RenderBuffers(deviceContext);
 
 	return true;
+}
+
+bool BitmapClass::operator<(BitmapClass& RightBitmap)
+{
+	if (this->GetRenderPriority() < RightBitmap.GetRenderPriority())
+	{
+		return true;
+	}
+	return false;
+}
+
+bool BitmapClass::operator>(BitmapClass& RightBitmap)
+{
+	if (this->GetRenderPriority() > RightBitmap.GetRenderPriority())
+	{
+		return true;
+	}
+	return false;
 }
 
 int BitmapClass::GetIndexCount()
@@ -105,6 +126,35 @@ int BitmapClass::GetNextPosX()
 int BitmapClass::GetNextPosY()
 {
 	return m_nextPosY;
+}
+
+bool BitmapClass::GetIsVisible()
+{
+	return m_isVisible;
+}
+
+bool BitmapClass::GetIsFitState()
+{
+	GameStateEnum nowState = GameStateClass::GetGameStateEnum();
+	for (int i = 0; i < m_EnabledStateCount; ++i)
+	{
+		if (m_EnabledState[i] == nowState)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+void BitmapClass::SetIsVisible(bool visibleNow)
+{
+	m_isVisible = visibleNow;
+}
+
+void BitmapClass::InitPos(int x, int y)
+{
+	m_previousPosX = x;
+	m_previousPosY = y;
 }
 
 bool BitmapClass::InitializeBuffers(ID3D11Device* device)
@@ -347,3 +397,4 @@ int BitmapClass::GetRenderPriority()
 {
 	return m_renderPriority;
 }
+

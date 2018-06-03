@@ -14,8 +14,10 @@ public:
 	bool Render(XMMATRIX, XMMATRIX, XMMATRIX);
 	bool AddRenderTarget(BitmapClass*);
 	void Shutdown();
+	void Sort();
+
 private:
-	list<BitmapClass*> RenderTarget;
+	list<BitmapClass*> m_RenderTarget;
 	TextureShaderClass* m_textureShader;
 	D3DClass* m_direct3D;
 };

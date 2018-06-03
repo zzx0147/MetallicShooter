@@ -26,7 +26,6 @@ bool SystemClass::Initialize()
 	InitializeWindows(screenWidth, screenHeight);
 
 	//인풋 객체 생성 차후 사용자 키보드 입력에 사용
-	InputClass::CreateInputClass();
 
 	m_Input = InputClass::GetInputObject();
 	if (!m_Input)
@@ -46,7 +45,6 @@ bool SystemClass::Initialize()
 
 	//m_Grpahics 객체 초기화
 	return m_Graphics->Initialize(screenWidth, screenHeight, m_hwnd);
-
 }
 
 void SystemClass::Shutdown()

@@ -8,9 +8,11 @@ class ActorManager
 public:
 	ActorManager();
 	~ActorManager();
-	void addActor(ActorClass*);
+	bool Initialize();
 	void Frame();
+	void AddActor(ActorClass*);
+	
 private:
-	list<ActorClass*> ActorList;
+	list<ActorClass*>* m_ActorList = nullptr;
 };
 
