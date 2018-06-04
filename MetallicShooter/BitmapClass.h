@@ -15,7 +15,7 @@ public:
 	BitmapClass();
 	BitmapClass(const BitmapClass&);
 	~BitmapClass();
-	bool Initialize(ID3D11Device*, ID3D11DeviceContext* deviceContext,const int&,const int&, WCHAR*,const int&,const int&,const int&,const int&,GameStateEnum*);
+	virtual bool Initialize(ID3D11Device*, ID3D11DeviceContext* deviceContext,const int&,const int&, WCHAR*,const int&,const int&,const int&,const int&,GameStateEnum*);
 
 	void Shutdown();
 	virtual bool Render(ID3D11DeviceContext*, int, int);

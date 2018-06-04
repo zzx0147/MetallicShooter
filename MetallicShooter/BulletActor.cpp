@@ -13,7 +13,7 @@ BulletActor::~BulletActor()
 
 bool BulletActor::Frame()
 {
-	SetNextPosY(GetPreviousPosY()-5);
+	SetNextPosY(GetPreviousPosY()-10);
 	if (isOutofScreen())
 	{
 		SetIsVisible(false);

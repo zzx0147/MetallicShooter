@@ -99,6 +99,13 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	{
 		return false;
 	}
+	//스페이스쉽 안의 불렛 객체를 생성
+	if (!SpaceShip->InitalizeBullet(m_CreatorHelper, m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), screenWidth, screenHeight,
+		(WCHAR*)L"../MetallicShooter/data/Bullet.png", 10, 20, 10, 1, new GameStateEnum[1]{ GameStateEnum::INGAME }))
+	{
+		return false;
+	}
+	
 
 	//백그라운드 객체를 생성함
 	m_BackGround = m_CreatorHelper->CreateObject<BitmapClass>();
