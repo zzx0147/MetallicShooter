@@ -146,6 +146,16 @@ bool BitmapClass::GetIsFitState()
 	return false;
 }
 
+int BitmapClass::GetScreenWidth()
+{
+	return m_screenWidth;
+}
+
+int BitmapClass::GetScreenHeight()
+{
+	return m_screenHeight;
+}
+
 void BitmapClass::SetIsVisible(bool visibleNow)
 {
 	m_isVisible = visibleNow;

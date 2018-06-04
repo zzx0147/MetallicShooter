@@ -34,6 +34,8 @@ public:
 	int GetRenderPriority();
 	bool GetIsVisible();
 	bool GetIsFitState();
+	int GetScreenWidth();
+	int GetScreenHeight();
 
 	void SetTextureUV(float, float, float, float);
 	void SetNextPosX(int);

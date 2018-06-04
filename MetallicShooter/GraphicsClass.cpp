@@ -12,6 +12,7 @@
 #include "SpaceShipActorClass.h"
 #include "PressEnterToStart.h"
 #include "FlowingBackgroundActor.h"
+#include "BulletActor.h"
 #include <cstdlib>
 #include <ctime>
 
@@ -150,7 +151,6 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	backGround1->InitPos(0, 0);
 	backGround2->InitPos(0, 1080);
 
-	
 	m_RenderManager->Sort();
 
 	return true;
