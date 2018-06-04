@@ -15,7 +15,7 @@ RenderManager::~RenderManager()
 
 bool RenderManager::Initialize(TextureShaderClass* shader,D3DClass* direct3D)
 {
-
+	
 	m_textureShader = shader;
 	m_direct3D = direct3D;
 	return true;

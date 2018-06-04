@@ -9,4 +9,3 @@ public:
 
 	virtual bool Frame() override;
 };
-

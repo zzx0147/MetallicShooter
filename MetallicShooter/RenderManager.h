@@ -21,4 +21,3 @@ private:
 	TextureShaderClass* m_textureShader;
 	D3DClass* m_direct3D;
 };
-
