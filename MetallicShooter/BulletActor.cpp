@@ -28,7 +28,7 @@ bool BulletActor::isOutofScreen()
 	int width = GetBitmapWidth();
 	int height = GetBitmapHeight();
 
-	if ((y < 0 - height || y>GetScreenHeight()) &&( x < 0 - width || x>GetScreenWidth()))
+	if ((y < (0 - height) || y>GetScreenHeight()) || ( x < (0 - width) || x>GetScreenWidth()))
 	{
 		return true;
 	}

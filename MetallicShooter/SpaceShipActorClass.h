@@ -13,5 +13,7 @@ public:
 
 	virtual bool Frame() override;
 private:
-	BulletActor* m_BulletActor;
+	BulletActor* m_BulletActor = nullptr;
+	int m_NumberOfBullets = 30;
+	int m_bulletCount = 0;
 };
