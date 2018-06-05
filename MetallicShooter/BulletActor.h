@@ -1,5 +1,6 @@
 #pragma once
 #include "ActorClass.h"
+
 class BulletActor :
 	public ActorClass
 {
@@ -9,5 +10,7 @@ public:
 
 	virtual bool Frame() override;
 	bool isOutofScreen();
+private:
+
 };
 

@@ -66,8 +66,11 @@ bool SpaceShipActorClass::Frame()
 	SetNextPosX(GetPreviousPosX() + vector2.x);
 	SetNextPosY(GetPreviousPosY() + vector2.y);
 
-	if (InputClass::GetInputObject()->IsKeyDownOnce(VK_SPACE))
+
+	duration<double> sec = system_clock::now() - m_timepoint;
+	if (InputClass::GetInputObject()->IsKeyDown(VK_SPACE) && sec.count()>0.05f )
 	{
+		m_timepoint = system_clock::now();
 		(m_BulletActor+m_bulletCount)->InitPos(GetNextPosX(), GetNextPosY());
 		(m_BulletActor + m_bulletCount)->SetNextPosX(GetNextPosX()+GetBitmapWidth()/2-m_BulletActor->GetBitmapWidth()/2);
 		(m_BulletActor + m_bulletCount)->SetIsVisible(true);
