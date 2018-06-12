@@ -1,3 +1,3 @@
 # MetallicShooter
 
-슈팅 게임입니다.
+DirectX11 2D 게임 엔진 제작을 위해 만드는 슈팅게임입니다.
